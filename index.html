@@ -431,25 +431,38 @@ if (window.matchMedia('(min-width: 1024px)').matches) {
   // Mobile-specific code here
 }
 
-// Prevent download of audio and video elements
 document.addEventListener('DOMContentLoaded', () => {
-    // Select all video and audio elements
     const mediaElements = document.querySelectorAll('video, audio');
-    
+
     mediaElements.forEach((media) => {
-        // Disable right-click context menu on video and audio
+        // Disable right-click context menu
         media.addEventListener('contextmenu', (event) => {
-            event.preventDefault(); // Prevent context menu from appearing
-            alert("Downloading this media is disabled.");
+            event.preventDefault();
+            console.log("Context menu disabled.");
         });
 
-        // Disable download attribute if present
-        if (media.hasAttribute('download')) {
-            media.removeAttribute('download');
-        }
+        // Prevent source URL exposure
+        media.removeAttribute('src');
+        media.addEventListener('click', (event) => {
+            event.preventDefault();
+            console.log("Playback attempts logged but source hidden.");
+        });
+
+        // Block common key combinations for saving media
+        document.addEventListener('keydown', (event) => {
+            if (event.ctrlKey && (event.key === 's' || event.key === 'S')) {
+                event.preventDefault();
+                alert("Save functionality is disabled.");
+            }
+        });
+
+        // Prevent drag and drop
+        media.addEventListener('dragstart', (event) => {
+            event.preventDefault();
+            console.log("Dragging media is disabled.");
+        });
     });
 });
-
 </script>
 </body>
 </html>
