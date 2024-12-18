@@ -249,7 +249,7 @@ padding: 0;
     <div class="loader"></div>
         <!-- Profile Section -->
         <div class="profile-section">
-            <img src="images/sunflower.png" alt="Profile Picture" class="profile-image">
+            <img src="1.jpg" alt="Profile Picture" class="profile-image">
             <h2 class="profile-name">Artist Name</h2>
             <p class="profile-details">Producer | Vocalist | Musician</p>
             <p class="profile-bio">This is a brief bio about the artist, including their background, style, and music genre.</p>
@@ -273,7 +273,7 @@ padding: 0;
                 <li>
                     <p>Song 1</p>
                     <audio id="audio-player" controls>
-                        <source src="music/Radin Solo.mp3" type="audio/mp3">
+                        <source src="1.mp3" type="audio/mp3">
                         Your browser does not support the audio element.
                     </audio>
                     <div id="audio-info" di="info1">
@@ -285,7 +285,7 @@ padding: 0;
                 <li>
                     <p>Song 2</p>
                     <audio id="audio-player" controls>
-                        <source src="music/Twinbed.mp3" type="audio/mp3">
+                        <source src="2.mp3" type="audio/mp3">
                         Your browser does not support the audio element.
                     </audio>
                     <div class="audio-info" id="info2">
@@ -306,14 +306,14 @@ padding: 0;
                 <li>
                     <p>Video 1</p>
                     <video controls>
-                        <source src="DandaDan.mp4" type="video/mp4">
+                        <source src="1" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </li>
                 <li>
                     <p>Video 2</p>
                     <video controls>
-                        <source src="video2.mp4" type="video/mp4">
+                        <source src="2.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </li>
@@ -430,6 +430,25 @@ if (window.matchMedia('(min-width: 1024px)').matches) {
 } else {
   // Mobile-specific code here
 }
+
+// Prevent download of audio and video elements
+document.addEventListener('DOMContentLoaded', () => {
+    // Select all video and audio elements
+    const mediaElements = document.querySelectorAll('video, audio');
+    
+    mediaElements.forEach((media) => {
+        // Disable right-click context menu on video and audio
+        media.addEventListener('contextmenu', (event) => {
+            event.preventDefault(); // Prevent context menu from appearing
+            alert("Downloading this media is disabled.");
+        });
+
+        // Disable download attribute if present
+        if (media.hasAttribute('download')) {
+            media.removeAttribute('download');
+        }
+    });
+});
 
 </script>
 </body>
