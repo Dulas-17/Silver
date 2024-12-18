@@ -324,10 +324,10 @@ padding: 0;
         <section id="contact-section">
             <h3>Contact</h3>
             <div id="contact-info">
-                <p><strong>Email:</strong> artist@example.com</p>
-                <p><strong>WhatsApp:</strong> <a href="https://wa.me/1234567890" target="_blank">Chat on WhatsApp</a></p>
+                <p><strong>Email:</strong> abdullahtshabalala@outlook.com</p>
+                <p><strong>WhatsApp:</strong> <a href="https://wa.me/83 481 3844" target="_blank">Chat on WhatsApp</a></p>
                 <p><strong>Social Media:</strong></p>
-                <a href="https://facebooklite.com" target="_blank">Facebook</a> |
+                <a href="https://facebooklite.com" target="_blank">Facebook/dulas de one</a> |
                 <a href="https://instagram.com" target="_blank">Instagram</a> |
                 <a href="https://twitter.com" target="_blank">Twitter</a> |
                 <a href="https://linkedin.com" target="_blank">LinkedIn</a>
@@ -431,38 +431,7 @@ if (window.matchMedia('(min-width: 1024px)').matches) {
   // Mobile-specific code here
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const mediaElements = document.querySelectorAll('video, audio');
 
-    mediaElements.forEach((media) => {
-        // Disable right-click context menu
-        media.addEventListener('contextmenu', (event) => {
-            event.preventDefault();
-            console.log("Context menu disabled.");
-        });
-
-        // Prevent source URL exposure
-        media.removeAttribute('src');
-        media.addEventListener('click', (event) => {
-            event.preventDefault();
-            console.log("Playback attempts logged but source hidden.");
-        });
-
-        // Block common key combinations for saving media
-        document.addEventListener('keydown', (event) => {
-            if (event.ctrlKey && (event.key === 's' || event.key === 'S')) {
-                event.preventDefault();
-                alert("Save functionality is disabled.");
-            }
-        });
-
-        // Prevent drag and drop
-        media.addEventListener('dragstart', (event) => {
-            event.preventDefault();
-            console.log("Dragging media is disabled.");
-        });
-    });
-});
 </script>
 </body>
 </html>
