@@ -431,38 +431,7 @@ if (window.matchMedia('(min-width: 1024px)').matches) {
   // Mobile-specific code here
 }
 
-   document.addEventListener('DOMContentLoaded', () => {
-    const audioElements = document.querySelectorAll('audio');
-
-    audioElements.forEach((audio) => {
-        // Ensure audio is fully loaded before playback
-        audio.preload = "auto";
-
-        // Set playback rate to normal (or customize as needed)
-        audio.playbackRate = 1.0;
-
-        // Enable high-quality audio buffering
-        audio.addEventListener('canplay', () => {
-            audio.play();
-            console.log("Audio playback optimized for quality.");
-        });
-
-        // Customize audio volume (e.g., set to 80%)
-        audio.volume = 0.8;
-
-        // Optional: Apply Equalizer-like settings via Web Audio API
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        const source = audioContext.createMediaElementSource(audio);
-        const gainNode = audioContext.createGain();
-        const bassFilter = audioContext.createBiquadFilter();
-        bassFilter.type = "lowshelf";
-        bassFilter.frequency.setValueAtTime(200, audioContext.currentTime); // Adjust bass
-        bassFilter.gain.setValueAtTime(5, audioContext.currentTime); // Increase bass by 5dB
-
-        // Connect nodes for enhanced audio
-        source.connect(bassFilter).connect(gainNode).connect(audioContext.destination);
-    });
-});     
+   
 
 </script>
 </body>
